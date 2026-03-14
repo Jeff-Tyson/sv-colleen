@@ -53,31 +53,33 @@ export default function Home() {
 
   return (
     <div>
+      {/* Hero Section */}
       <section className="relative w-full h-[70vh] min-h-[500px] overflow-hidden" data-testid="section-hero">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroPath})` }}
-        />
-        <div
-          className="absolute inset-0"
           style={{
-            background: `
-              radial-gradient(ellipse 60% 50% at 50% 55%, transparent 0%, transparent 30%, hsla(220, 70%, 12%, 0.3) 60%, hsla(220, 70%, 10%, 0.7) 100%),
-              linear-gradient(to bottom, hsla(220, 70%, 10%, 0.15) 0%, transparent 30%, transparent 60%, hsla(220, 70%, 10%, 0.6) 100%)
-            `,
+            backgroundImage: `url(${heroPath})`,
+            filter: "saturate(1.15) brightness(1.1)",
           }}
         />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        {/* Minimal text-readability scrim — no vignette */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/3"
+          style={{
+            background: "linear-gradient(to top, hsla(220, 50%, 8%, 0.45) 0%, transparent 100%)",
+          }}
+        />
+        <div className="relative z-10 flex flex-col items-center justify-end h-full text-center px-4 pb-12">
           <h1
-            className="text-5xl md:text-7xl font-bold text-white tracking-tight drop-shadow-lg"
-            style={{ textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
+            className="text-5xl md:text-7xl font-bold text-white tracking-tight"
+            style={{ textShadow: "0 2px 12px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.3)" }}
             data-testid="text-hero-title"
           >
             S/V Colleen
           </h1>
           <p
-            className="mt-3 text-lg md:text-xl text-white/90 font-medium tracking-wide"
-            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+            className="mt-3 text-lg md:text-xl text-white/95 font-medium tracking-wide"
+            style={{ textShadow: "0 1px 6px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.2)" }}
             data-testid="text-hero-subtitle"
           >
             1984 Cambria 44 &bull; Hull #1
@@ -85,6 +87,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Specs Strip */}
       <section className="bg-primary text-primary-foreground" data-testid="section-specs">
         <div className="max-w-7xl mx-auto px-4 py-5">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
@@ -98,11 +101,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Description */}
       <section className="max-w-4xl mx-auto px-4 py-16" data-testid="section-description">
         {isLoading ? (
           <div className="space-y-3">
             <div className="h-6 bg-muted rounded animate-pulse w-48" />
             <div className="h-4 bg-muted rounded animate-pulse w-full" />
+            <div className="h-4 bg-muted rounded animate-pulse w-3/4" />
           </div>
         ) : (
           <>
@@ -130,6 +135,7 @@ export default function Home() {
         )}
       </section>
 
+      {/* Highlighted Features */}
       <section className="bg-card/50 border-t border-border/40" data-testid="section-highlights">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <h2 className="text-2xl font-bold text-foreground text-center mb-10">Highlighted Features</h2>
@@ -139,6 +145,8 @@ export default function Home() {
                 <div key={i} className="bg-card border border-card-border rounded-xl p-6 animate-pulse">
                   <div className="w-10 h-10 bg-muted rounded-lg mb-4" />
                   <div className="h-5 bg-muted rounded w-3/4 mb-2" />
+                  <div className="h-3 bg-muted rounded w-full" />
+                  <div className="h-3 bg-muted rounded w-2/3 mt-1" />
                 </div>
               ))}
             </div>
